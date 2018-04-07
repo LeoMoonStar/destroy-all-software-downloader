@@ -1,13 +1,14 @@
 import scrapy
-
+import os
 from subprocess import call
-
-BASE_PATH = "/media/greg/Data/DestroyAllSoftware/scripts/das/videos/"
 
 class VideoSpider(scrapy.Spider):
     name = 'video'
 
     start_urls = ['https://www.destroyallsoftware.com/screencasts/catalog']
+
+    def __init__(self, outputFolder):
+        self.outputFolder = outputFolder
 
     def parse(self, response):
         # Find links to each dentist page
@@ -31,9 +32,9 @@ class VideoSpider(scrapy.Spider):
         filename = url[filenameStart:filenameEnd]
 
         
-        command = 'wget -c -O "%s%s" "%s"' % (BASE_PATH, filename, url)
-        PATH = "/media/greg/Data/DestroyAllSoftware/scripts/das/videos/"
-        call(["wget", "-c", "-O", PATH + filename, url])
+        command = 'wget -c -O "%s" "%s"' % (os.path.join(self.outputFolder, filename), url)
+        print(command)
+        call(["wget", "-c", "-O", os.path.join(self.outputFolder, filename), url])
         
 
 
