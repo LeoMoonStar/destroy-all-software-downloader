@@ -11,7 +11,7 @@ class VideoSpider(scrapy.Spider):
         self.outputFolder = outputFolder
 
     def parse(self, response):
-        # Find links to each dentist page
+        # Find links to each video page
         videoPages = response.xpath("//a[contains(@href, 'screencasts/catalog/')]/@href").extract()
         for videoPage in videoPages:
             yield response.follow(videoPage, self.parseVideoPage)
