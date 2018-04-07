@@ -1,5 +1,7 @@
-# Destroy All Ssoftware Downloader
-A simple script to download all the Destroy All Software screencasts
+# Destroy All Software Downloader
+A simple script to download all the [Destroy All Software screencasts](https://www.destroyallsoftware.com/screencasts/catalog) during the week they're free. 
+
+If you like DAS, consider subscribing!
 
 To run it, execute the following line which will download the videos in the *videos* directory:
 
